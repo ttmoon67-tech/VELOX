@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      # Build with basePath for GitHub Pages project site
+      - run: |
+          echo 'import type { NextConfig } from "next";' > next.config.ts
+          echo '' >> next.config.ts
+          echo 'const nextConfig: NextConfig = {' >> next.config.ts
+          echo '  output: "export",' >> next.config.ts
+          echo '  basePath: "/VELOX",' >> next.config.ts
+          echo '  images: { unoptimized: true },' >> next.config.ts
+          echo '};' >> next.config.ts
+          echo 'export default nextConfig;' >> next.config.ts
+          npm run build
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
