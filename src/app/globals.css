@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ============================================
+   VELOX Brand Theme
+   Primary: #3F0FA7 — Deep Purple
+   Style: Bright, clean DTC (Casekoo-inspired)
+   ============================================ */
+
+@theme inline {
+  /* Brand Colors */
+  --color-brand: #3F0FA7;
+  --color-brand-light: #5C2DC9;
+  --color-brand-lighter: #7B52DB;
+  --color-brand-dark: #2D0B78;
+  --color-brand-pale: #F4F0FD;
+
+  /* Surface Colors */
+  --color-surface-primary: #FFFFFF;
+  --color-surface-secondary: #F8F7FA;
+  --color-surface-tertiary: #F0EDF5;
+
+  /* Text Colors */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
+  --color-text-inverse: #FFFFFF;
+
+  /* Border Colors */
+  --color-border-light: #F0EDF5;
+  --color-border-medium: #E0DCE8;
+
+  /* Status Colors */
+  --color-star: #F5A623;
+
+  /* Font */
+  --font-sans: var(--font-inter);
+}
+
+/* Base Styles */
+body {
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: #3F0FA7;
+  color: white;
+}
+
+/* ============================================
+   Custom Keyframes
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(63, 15, 167, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(63, 15, 167, 0.25);
+  }
+}
+
+/* ============================================
+   Scroll Reveal Animation
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0, 0, 1),
+    transform 0.7s cubic-bezier(0.2, 0, 0, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   GlowCard — cursor spotlight effect
+   ============================================ */
+[data-glow]::before,
+[data-glow]::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-size) * -1);
+  border: var(--border-size) solid transparent;
+  border-radius: calc(var(--radius) * 1px);
+  background-attachment: fixed;
+  background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+}
+
+[data-glow]::before {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+    calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(var(--hue, 210) calc(var(--saturation, 100) * 1%) calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)), transparent 100%
+  );
+  filter: brightness(2);
+}
+
+[data-glow]::after {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
+    calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(0 100% 100% / var(--border-light-opacity, 1)), transparent 100%
+  );
+}
+
+[data-glow] > [data-glow] {
+  position: absolute;
+  inset: 0;
+  will-change: filter;
+  opacity: var(--outer, 1);
+  border-radius: calc(var(--radius) * 1px);
+  border: none;
+  background: none;
+  pointer-events: none;
+}
+
+/* Hide scrollbar for lifestyle carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================
+   Custom Utility: CTA Button Press Animation
+   ============================================ */
+@layer utilities {
+  .btn-press {
+    transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1),
+      box-shadow 0.15s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .btn-press:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(63, 15, 167, 0.3);
+  }
+}
