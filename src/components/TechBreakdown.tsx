@@ -7,7 +7,7 @@ const BREAKDOWNS = [
     title: "Multi-Layer Defense System",
     description:
       "Three distinct layers work in concert: a scratch-resistant hardcoat, a shock-absorbing TPU mid-frame, and a soft microfiber inner lining that cradles your device. German Bayer polycarbonate ensures zero yellowing over time.",
-    image: "/产品结构拆解图 (1).png",
+    image: "/tech-layers.png",
     reverse: false,
   },
   {
@@ -16,7 +16,7 @@ const BREAKDOWNS = [
     title: "Air-Cushion Impact Technology",
     description:
       "Inspired by athletic footwear, each corner houses a precision-engineered air pocket that compresses on impact, dispersing force laterally across the frame. Your phone survives drops that would shatter conventional cases.",
-    image: "/产品特写图 (1).png",
+    image: "/tech-corners.png",
     reverse: true,
   },
   {
@@ -25,7 +25,7 @@ const BREAKDOWNS = [
     title: "Precision Magnetic Alignment",
     description:
       "An embedded array of 38 N52-grade neodymium magnets forms a perfect alignment ring. Snap confidently onto chargers, wallets, stands, and car mounts — zero wobble, full-speed 15W wireless charging.",
-    image: "/产品细节图.png",
+    image: "/tech-magsafe.png",
     reverse: false,
   },
 ];
@@ -49,7 +49,7 @@ export default function TechBreakdown() {
         {/* Intro Overview Image */}
         <div className="relative rounded-3xl overflow-hidden mb-24 lg:mb-32 bg-surface-secondary">
           <Image
-            src="/产品介绍总起.png"
+            src="/tech-overview.png"
             alt="VELOX AeroShield — product detail overview"
             width={1400}
             height={700}
@@ -116,7 +116,7 @@ export default function TechBreakdown() {
         {/* Lifestyle Banner */}
         <div className="mt-24 lg:mt-32 relative rounded-3xl overflow-hidden group">
           <Image
-            src="/手机壳+场景的横向宽图.png"
+            src="/lifestyle-wide.png"
             alt="VELOX phone case — lifestyle"
             width={2400}
             height={1200}

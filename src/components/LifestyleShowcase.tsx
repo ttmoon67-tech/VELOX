@@ -109,10 +109,10 @@ function GlowCard({
    ============================================ */
 
 const LIFESTYLE_CARDS = [
-  { image: "/场景图1.png" },
-  { image: "/场景图2.png" },
-  { image: "/场景图3.png" },
-  { image: "/场景图4.png" },
+  { image: "/lifestyle-1.png" },
+  { image: "/lifestyle-2.png" },
+  { image: "/lifestyle-3.png" },
+  { image: "/lifestyle-4.png" },
 ];
 
 export default function LifestyleShowcase() {
