@@ -1,29 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function HeroBanner() {
-  const [offsetY, setOffsetY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setOffsetY(window.scrollY * 0.3);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <section
       aria-label="Hero banner"
-      className="relative min-h-screen flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/banner4.png')" }}
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
+      {/* Banner background image — Next.js Image handles basePath */}
+      <Image
+        src="/banner4.png"
+        alt="VELOX hero background"
+        fill
+        className="object-cover object-center"
+        priority
+        sizes="100vw"
+      />
+
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/35 to-black/15" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/35 to-black/15 z-10" />
 
-      {/* Optional: subtle purple tint on overlay */}
-      <div className="absolute inset-0 bg-brand/10" />
+      {/* Subtle purple tint on overlay */}
+      <div className="absolute inset-0 bg-brand/10 z-10" />
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 py-32 lg:py-40 lg:px-8">
+      <div className="relative z-20 mx-auto max-w-7xl w-full px-6 py-32 lg:py-40 lg:px-8">
         {/* Text Content — left-aligned, generous breathing room */}
         <div className="max-w-2xl">
           {/* Mini label */}
@@ -86,7 +87,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 text-xs tracking-widest uppercase">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/40 text-xs tracking-widest uppercase">
         <span>Scroll</span>
         <div className="w-5 h-8 rounded-full border-2 border-white/20 flex justify-center pt-1.5">
           <div className="w-1 h-2 rounded-full bg-brand-lighter animate-[bounce_2s_infinite]" />
