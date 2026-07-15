@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { assetPath } from "@/lib/assetPath";
 
 const COLOR_VARIANTS = [
   { name: "Stealth Black", hex: "#1A1A1A" },
@@ -31,7 +32,7 @@ export default function ProductShowcase() {
           {/* Left — Product Image */}
           <div className="relative aspect-square bg-surface-secondary rounded-3xl flex items-center justify-center p-8 sm:p-12 overflow-hidden group">
             <Image
-              src="/product-white.png"
+              src={assetPath("/product-white.png")}
               alt="VELOX AeroShield Case"
               width={500}
               height={500}

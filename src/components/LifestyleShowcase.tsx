@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { assetPath } from "@/lib/assetPath";
 
 /* ============================================
    GlowCard — per-card hover glow, local coords
@@ -109,10 +110,10 @@ function GlowCard({
    ============================================ */
 
 const LIFESTYLE_CARDS = [
-  { image: "/lifestyle-1.png" },
-  { image: "/lifestyle-2.png" },
-  { image: "/lifestyle-3.png" },
-  { image: "/lifestyle-4.png" },
+  { image: assetPath("/lifestyle-1.png") },
+  { image: assetPath("/lifestyle-2.png") },
+  { image: assetPath("/lifestyle-3.png") },
+  { image: assetPath("/lifestyle-4.png") },
 ];
 
 export default function LifestyleShowcase() {

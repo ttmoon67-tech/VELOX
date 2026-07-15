@@ -28,11 +28,14 @@ jobs:
           echo 'const nextConfig: NextConfig = {' >> next.config.ts
           echo '  output: "export",' >> next.config.ts
           echo '  basePath: "/VELOX",' >> next.config.ts
-          echo '  assetPrefix: "/VELOX",' >> next.config.ts
           echo '  images: { unoptimized: true },' >> next.config.ts
           echo '};' >> next.config.ts
           echo 'export default nextConfig;' >> next.config.ts
-          npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /VELOX
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /VELOX
 
       - uses: peaceiris/actions-gh-pages@v3
         with:

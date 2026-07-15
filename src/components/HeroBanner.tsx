@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { assetPath } from "@/lib/assetPath";
 
 export default function HeroBanner() {
   return (
@@ -10,7 +11,7 @@ export default function HeroBanner() {
     >
       {/* Banner background image — Next.js Image handles basePath */}
       <Image
-        src="/banner4.png"
+        src={assetPath("/banner4.png")}
         alt="VELOX hero background"
         fill
         className="object-cover object-center"
